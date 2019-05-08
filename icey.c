@@ -1,43 +1,43 @@
-﻿#include <kipr/botball.h>
+#include <kipr/botball.h>
 
 int main()
 {
-    set_servo_position(3, 320);
-    enable_servo(3);
+    set_servo_position(2,1800);
+    enable_servo(2);
     msleep(400);
-    create_connect();
-    create_full();
-    create_drive_direct(-200,-200);
-    msleep(4100);
-    create_stop();
-    set_create_total_angle(0);
-    while (get_create_total_angle() < 95)
-        create_drive_direct(-150,150);
-    create_stop();
-    create_drive_direct(-150,-150);
-    msleep(2450);
-    create_stop();
-    set_servo_position(3, 1600);
-    enable_servo(3);
-    msleep(400);
-    create_drive_direct(-200,-200);
-    msleep(1100);
-    create_stop();
-    create_drive_direct(-100,100);
-    msleep(500);
-    set_servo_position(3, 320);
+    mav(2,-1000);
+    mav(3,-1030);
+    msleep(5500);
+    ao();
+    msleep(100);
+    double angle = 85;
+    mrp(3,1000,-angle/360 * 39 * 103);
+    mrp(2,1000, angle/360 * 39 * 103);
+    bmd(2);
+    set_servo_position(2,235);
     msleep(200);
-    create_drive_direct(100,-100);
-    msleep(600);
-    create_drive_direct(200,200);
-    msleep(1800);
-    create_stop();
+    mav(2,1000);
+    mav(3,1000);
+    msleep(6600);
+    ao();
+    msleep(100);
+    mrp(3,1000,-9.3*103);
+    mrp(2,1000,9.3*103);
+    bmd(2);
     msleep(200);
-    set_servo_position(3,1600);
+    set_servo_position(2, 1550);
     msleep(200);
-    while ((get_create_rbump() == 0) && (get_create_lbump() == 0))
-    	create_drive_direct(500,500);
-    create_stop();
-    create_disconnect();
+    mav(2,1100);
+    mav(3,1200);
+    msleep(2800);
+    mrp(2,1000,3*103);
+    mrp(3,1000,3*103);
+    bmd(3);
+    set_servo_position(2, 1900);
+    msleep(200);
+    mav(2,-1000);
+    mav(3,-800);
+    msleep(2000);
+    ao();
     return 0; 
 }
